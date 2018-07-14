@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -16,6 +17,8 @@ import java.util.ArrayList;
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.VHolder> {
     private Context context;
     private ArrayList<User> userArrayList;
+    ListenOnItemClick itemClick;
+
 
     public UserAdapter(Context context, ArrayList<User> userArrayList) {
 
@@ -34,6 +37,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.VHolder> {
             av=itemView.findViewById(R.id.avat);
             name=itemView.findViewById(R.id.name);
             status =itemView.findViewById(R.id.status);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context, "ddddddddddd", Toast.LENGTH_LONG).show();
+
+                }
+            });
         }
     }
 
@@ -58,4 +68,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.VHolder> {
     public int getItemCount() {
         return userArrayList.size();
     }
+}
+interface ListenOnItemClick{
+    void onItemClick();
 }
